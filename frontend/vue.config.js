@@ -4,7 +4,7 @@ module.exports = defineConfig({
   transpileDependencies: [
     'vuetify'
   ],
-  outputDir: '../staticfiles',
+  outputDir: 'dist',
   assetsDir: '',
   publicPath: '/static/',
   filenameHashing: false,

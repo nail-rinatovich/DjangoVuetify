@@ -14,6 +14,10 @@ npm install
 npm run build
 cd ..
 
+# Копирование собранных файлов фронтенда
+mkdir -p staticfiles
+cp -r frontend/dist/* staticfiles/
+
 # Сборка бэкенда
 python manage.py collectstatic --no-input
 python manage.py migrate
