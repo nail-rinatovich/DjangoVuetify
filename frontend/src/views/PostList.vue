@@ -130,11 +130,25 @@ export default {
     async fetchPosts() {
       this.loading = true
       try {
+        console.log('Fetching posts from:', `/api/posts/?page=${this.currentPage}`)
         const response = await axios.get(`/api/posts/?page=${this.currentPage}`)
+        console.log('API Response:', response.data)
         this.posts = response.data.results
         this.totalPages = Math.ceil(response.data.count / 10)
       } catch (error) {
         console.error('Error fetching posts:', error)
+        console.error('Error details:', {
+          message: error.message,
+          response: error.response ? {
+            status: error.response.status,
+            data: error.response.data
+          } : 'No response',
+          config: {
+            url: error.config.url,
+            method: error.config.method,
+            baseURL: error.config.baseURL
+          }
+        })
       } finally {
         setTimeout(() => {
           this.loading = false
