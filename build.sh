@@ -5,6 +5,9 @@ set -o errexit
 # Установка Python зависимостей
 pip install -r requirements.txt
 
+# Очистка старых статических файлов
+python manage.py collectstatic --no-input --clear
+
 # Сборка фронтенда
 cd frontend
 npm install
@@ -13,4 +16,7 @@ cd ..
 
 # Сборка бэкенда
 python manage.py collectstatic --no-input
-python manage.py migrate 
+python manage.py migrate
+
+# Создание суперпользователя
+python create_superuser.py 
