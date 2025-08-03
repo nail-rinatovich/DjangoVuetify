@@ -27,6 +27,7 @@ COPY --from=frontend /app/frontend/dist /app/frontend/dist
 
 # Собираем статику
 RUN python manage.py collectstatic --noinput
+RUN python manage.py migrate
 
 # Запуск gunicorn
 CMD gunicorn blog_project.wsgi:application --bind 0.0.0.0:8000 
