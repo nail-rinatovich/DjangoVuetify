@@ -29,6 +29,6 @@ COPY --from=frontend /app/frontend/dist /app/frontend/dist
 RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate
 
-RUN python create_superuser.py
+# RUN python create_superuser.py
 # Запуск gunicorn
 CMD gunicorn blog_project.wsgi:application --bind 0.0.0.0:8000 
